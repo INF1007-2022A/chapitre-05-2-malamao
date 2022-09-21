@@ -8,7 +8,19 @@ def get_bill(name, data):
 	INDEX_QUANTITY = 1
 	INDEX_PRICE = 2
 
-	return ""
+	#sous total
+	somme = 0
+	for achat in data:
+		somme += achat[INDEX_QUANTITY] * achat[INDEX_PRICE]
+
+	#taxes
+	taxes = somme * 0.15
+	#total
+	total = (somme + taxes)
+
+
+	facture = name + "\nSOUS TOTAL {:.2f}$\nTAXES       {:.2f}$\nTOTAL      {:.2f}$".format(somme, taxes, total)
+	return facture
 
 
 def format_number(number, num_decimal_digits):
